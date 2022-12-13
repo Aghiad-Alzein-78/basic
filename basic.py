@@ -35,5 +35,24 @@ class Lexer:
     def make_tokens(self):
         tokens=[]
         while self.current_char!=None:
-            pass
+            if self.current_char in " \t":
+                self.advance()
+            elif self.current_char=='+':
+                tokens.append(Token(TT_PLUS))
+                self.advance()
+            elif self.current_char=='-':
+                tokens.append(Token(TT_MINUS))
+                self.advance()
+            elif self.current_char=='*':
+                tokens.append(Token(TT_PLUS))
+                self.advance()
+            elif self.current_char=='/':
+                tokens.append(Token(TT_DIV))
+                self.advance()
+            elif self.current_char=='(':
+                tokens.append(Token(TT_LPAREN))
+                self.advance()
+            elif self.current_char==')':
+                tokens.append(Token(TT_RPAREN))
+                self.advance()
         return tokens
